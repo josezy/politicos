@@ -5,8 +5,6 @@ import styles from '../../styles/Home.module.css'
 
 import InputWithLabel from '../components/InputWithLabel'
 
-console.log("ASDASd", styles)
-
 export default function Home() {
   const [userID, setUserID] = useState('')
 
