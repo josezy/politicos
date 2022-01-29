@@ -1,0 +1,14 @@
+.badge {
+  line-height: calc(14 / 12);
+  letter-spacing: 0.03em;
+
+  &.bg-glass {
+    background-color: rgb(13 13 13 / 40%);
+    backdrop-filter: blur(8px);
+
+    // Mozilla Firefox
+    @supports not (backdrop-filter: blur(8px)) {
+      background-color: rgb(13 13 13 / 60%);
+    }
+  }
+}

@@ -1,0 +1,153 @@
+.nav {
+  $this: &;
+
+  display: grid;
+
+  &-link {
+    line-height: 1.25;
+  }
+
+  &--header {
+    grid-auto-flow: column;
+    column-gap: 12px;
+    margin-right: -16px;
+
+    @include b-d(xxl) {
+      display: none;
+    }
+
+    .nav-link {
+      text-transform: uppercase;
+    }
+  }
+
+  &--dropdown {
+    row-gap: 8px;
+    justify-items: center;
+  }
+
+  &--footer {
+    display: grid;
+    margin: -6px;
+
+    @include b-up(md) {
+      row-gap: 4px;
+    }
+
+    .nav-link {
+      padding: 6px;
+      font-size: inherit;
+      line-height: inherit;
+      color: $gray-300;
+
+      &:hover,
+      &:focus {
+        color: $white;
+      }
+    }
+  }
+
+  /* Variant: white */
+  &-white {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    column-gap: 4px;
+    padding: 2px;
+    background-color: transparent;
+    border: 2px solid $gray-800;
+    border-radius: 100px;
+
+    #{$this}-link {
+      @include text-syne-14-bold;
+
+      position: relative;
+      display: grid;
+      grid-auto-flow: column;
+      column-gap: 6px;
+      align-items: flex-end;
+      min-width: 104px;
+      padding: 12px 24px;
+      color: $gray-400;
+      text-align: center;
+      white-space: nowrap;
+      border-radius: 100px;
+
+      &:hover {
+        color: $white;
+      }
+
+      &.active {
+        color: $black;
+        background-color: $white;
+      }
+
+      small {
+        color: $gray-600;
+      }
+    }
+  }
+
+  /* Variant: aside */
+  &-aside {
+    display: grid;
+    row-gap: 8px;
+
+    #{$this}-link {
+      @include text-syne-14-bold;
+
+      position: relative;
+      padding: 16px;
+      border-radius: 12px;
+
+      &:hover {
+        color: currentcolor;
+        background-color: $gray-850;
+      }
+
+      &.active {
+        color: $white;
+        background: radial-gradient(
+          98.54% 76.07% at 93.79% 17.7%,
+          rgb(241 150 209 / 11%) 0%,
+          rgb(207 151 236 / 11%) 23.75%,
+          rgb(153 189 237 / 11%) 47.71%,
+          rgb(156 236 202 / 11%) 66.98%,
+          rgb(255 221 180 / 11%) 82.6%,
+          rgb(248 150 197 / 11%) 100%
+        );
+
+        &::after {
+          opacity: 1;
+        }
+
+        &:hover {
+          color: currentcolor;
+        }
+      }
+
+      &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 2px;
+        content: '';
+        background: radial-gradient(
+          98.54% 76.07% at 93.79% 17.7%,
+          #f196d1 0%,
+          #cf97ec 23.75%,
+          #99bded 47.71%,
+          #9cecca 66.98%,
+          #ffddb4 82.6%,
+          #f896c5 100%
+        );
+        border-radius: 12px;
+        opacity: 0;
+        mask: linear-gradient(#fff 0, #fff 100%) content-box,
+          linear-gradient(#fff 0, #fff 100%) border-box;
+        mask-composite: exclude;
+      }
+    }
+  }
+}

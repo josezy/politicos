@@ -1,0 +1,42 @@
+.card {
+  padding: 23px;
+  background-color: $gray-900;
+  border: 2px solid $gray-800;
+  border-radius: 24px;
+
+  @include b-d(lg) {
+    padding: 15px;
+  }
+}
+
+.hr-card {
+  width: calc(100% + 23px * 2);
+  margin-left: -23px;
+  background: linear-gradient(
+    270deg,
+    rgb(28 28 28 / 0%) 0%,
+    #1c1c1c 51.04%,
+    rgb(28 28 28 / 0%) 100%
+  );
+
+  @include b-d(lg) {
+    width: calc(100% + 15px * 2);
+    margin-left: -15px;
+  }
+}
+
+// Universal Asset Hub grid
+.grid-asset-hub-nfts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+
+  @include b-btw(md, lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include b-d(md) {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}

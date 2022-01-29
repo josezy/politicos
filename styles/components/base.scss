@@ -1,0 +1,32 @@
+a {
+  transition: color 0.25s;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  caret-color: $cyan;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $cyan;
+  border-radius: 5px;
+
+  &:hover {
+    background: darken($cyan, 10);
+  }
+}
+
+::selection {
+  background: rgba($cyan, 0.3);
+}
+
+svg {
+  display: block;
+}

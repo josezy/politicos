@@ -1,0 +1,18 @@
+.modal {
+  &-dialog {
+    padding: $modal-dialog-margin;
+  }
+
+  &-header {
+    justify-content: space-between;
+    color: $white;
+    border-bottom: 1px solid $white-100;
+  }
+
+  &-title {
+    @include text-joyride-15;
+
+    display: block;
+    text-transform: uppercase;
+  }
+}

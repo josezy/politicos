@@ -1,0 +1,79 @@
+.form {
+  &-text {
+    display: block;
+
+    &--error {
+      margin-top: 6px;
+      color: $cyan;
+      text-align: left;
+    }
+  }
+
+  &-label {
+    line-height: calc(16 / 13);
+    letter-spacing: 0.01em;
+  }
+
+  &-control {
+    $this: &;
+
+    position: relative;
+    font-feature-settings: inherit;
+    background: linear-gradient(180deg, #202024 13.57%, #131314 88.31%);
+    border-radius: $input-border-radius !important;
+
+    &--gradient-border {
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
+      left: -1px;
+      z-index: -1;
+      background: linear-gradient(
+        107.36deg,
+        #333 -1.2%,
+        #fff 38.53%,
+        #2b2b2b 80.3%
+      );
+      border-radius: calc(#{$input-border-radius} + 1px) !important;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    /* Variant: SOL */
+    &--sol {
+      padding-right: calc(16px + 35px + 16px);
+    }
+
+    /* Variant: search */
+    &--search {
+      padding-left: 48px;
+      caret-color: $white;
+    }
+
+    /* Variant: search-expandable */
+    &--search-expandable {
+      color: transparent;
+      border-radius: 100px !important;
+      caret-color: $white;
+
+      & + #{$this}--gradient-border {
+        border-radius: 100px !important;
+      }
+
+      &:focus,
+      &#{$this}--keep-expanded {
+        padding-left: 48px;
+        color: $white;
+      }
+    }
+
+    &:focus {
+      box-shadow: none;
+
+      & + #{$this}--gradient-border {
+        opacity: 1;
+      }
+    }
+  }
+}

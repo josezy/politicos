@@ -1,0 +1,71 @@
+h1 {
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+
+  @include b-d(md) {
+    font-size: 28px;
+    line-height: 1.358;
+  }
+}
+
+.font-family-syne {
+  @include font-family-syne;
+}
+
+.text-syne-12-bold {
+  @include text-syne-12-bold;
+}
+
+.text-syne-13-semi-bold {
+  @include text-syne-13-semi-bold;
+}
+
+.text-syne-13-bold {
+  @include text-syne-13-bold;
+}
+
+.text-syne-14 {
+  @include text-syne-14;
+}
+
+.text-syne-14-bold {
+  @include text-syne-14-bold;
+}
+
+.text-syne-16-semi-bold {
+  @include text-syne-16-semi-bold;
+}
+
+.text-syne-18-bold {
+  @include text-syne-18-bold;
+}
+
+.text-joyride-10 {
+  @include text-joyride-10;
+}
+
+.text-joyride-12 {
+  @include text-joyride-12;
+}
+
+.text-joyride-13 {
+  @include text-joyride-13;
+}
+
+.text-joyride-14 {
+  @include text-joyride-14;
+}
+
+.text-joyride-15 {
+  @include text-joyride-15;
+}
+
+.text-joyride-20 {
+  @include text-joyride-20;
+}
+
+.text-color-gradient-primary {
+  color: transparent;
+  background: linear-gradient(180deg, #4b98cd 0%, #1fcfb1 100%);
+  background-clip: text;
+}

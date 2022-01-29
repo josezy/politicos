@@ -1,0 +1,228 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/mixins';
+@import 'settings';
+@import 'keyframes';
+
+@mixin b-up($name) {
+  @include media-breakpoint-up($name) {
+    @content;
+  }
+}
+
+@mixin b-d($name) {
+  @include media-breakpoint-down($name) {
+    @content;
+  }
+}
+
+@mixin b-btw($lower, $upper) {
+  @include media-breakpoint-between($lower, $upper) {
+    @content;
+  }
+}
+
+@mixin b-o($name) {
+  @include media-breakpoint-only($name) {
+    @content;
+  }
+}
+
+// Typography
+
+@mixin font-family-joyride {
+  font-family: Joyride, 'Arial Black', sans-serif;
+}
+
+@mixin font-family-syne {
+  font-family: $font-family-sans-serif;
+}
+
+@mixin text-joyride-10 {
+  @include font-family-joyride;
+
+  font-size: 10px;
+  line-height: calc(12 / 10);
+  letter-spacing: 0.01em;
+}
+
+@mixin text-joyride-12 {
+  @include font-family-joyride;
+
+  font-size: 12px;
+  line-height: calc(22 / 12);
+}
+
+@mixin text-joyride-13 {
+  @include font-family-joyride;
+
+  font-size: 13px;
+  line-height: calc(14 / 13);
+}
+
+@mixin text-joyride-14 {
+  @include font-family-joyride;
+
+  font-size: 14px;
+  line-height: calc(20 / 14);
+}
+
+@mixin text-joyride-15 {
+  @include font-family-joyride;
+
+  font-size: 15px;
+  line-height: calc(20 / 15);
+}
+
+@mixin text-joyride-20 {
+  @include font-family-joyride;
+
+  font-size: 20px;
+  line-height: calc(24 / 20);
+  letter-spacing: 0.01em;
+}
+
+@mixin text-syne-12-bold {
+  font-size: 12px;
+  font-weight: $font-weight-bold;
+  line-height: calc(14 / 12);
+  letter-spacing: 0.03em;
+}
+
+@mixin text-syne-13-semi-bold {
+  font-size: 13px;
+  font-weight: $font-weight-semi-bold;
+  line-height: calc(16 / 13);
+  letter-spacing: 0.01em;
+}
+
+@mixin text-syne-13-bold {
+  font-size: 13px;
+  font-weight: $font-weight-bold;
+  line-height: calc(20 / 13);
+}
+
+@mixin text-syne-14 {
+  font-size: 14px;
+  line-height: calc(20 / 14);
+}
+
+@mixin text-syne-14-bold {
+  font-size: 14px;
+  font-weight: $font-weight-bold;
+  line-height: calc(16 / 14);
+}
+
+@mixin text-syne-16-semi-bold {
+  font-size: 16px;
+  font-weight: $font-weight-semi-bold;
+}
+
+@mixin text-syne-18-bold {
+  font-size: 18px;
+  font-weight: $font-weight-bold;
+  line-height: calc(24 / 18);
+  letter-spacing: -0.01em;
+}
+
+// Text gradients
+
+@mixin text-gradient-overlay {
+  color: transparent;
+
+  // noinspection CssInvalidPropertyValue
+  background-clip: text;
+}
+
+@mixin text-gradient-gray {
+  @include text-gradient-overlay;
+
+  background-image: linear-gradient(180deg, #8d8d8d 0%, #fff 100%);
+}
+
+@mixin text-gradient-primary {
+  @include text-gradient-overlay;
+
+  background-image: linear-gradient(180deg, #4b98cd 0%, #1fcfb1 100%);
+}
+
+// Scrollbars
+
+@mixin dark-scrollbar {
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $gray-800;
+    border-radius: 2px;
+
+    &:hover {
+      background-color: lighten($gray-800, 8);
+    }
+  }
+
+  // Mozilla Firefox
+  scrollbar-width: thin;
+  scrollbar-color: $gray-800 transparent;
+}
+
+@mixin hideScrollbar {
+  // https://blogs.msdn.microsoft.com/kurlak/2013/11/03/hiding-vertical-scrollbars-with-pure-css-in-chrome-ie-6-firefox-opera-and-safari/
+  // There is a CSS rule that can hide scrollbars in Webkit-based browsers (Chrome and Safari).
+  &::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  &::-webkit-scrollbar-track {
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  // There is a CSS rule that can hide scrollbars in IE 10+.
+  -ms-overflow-style: none !important;
+
+  // Use -ms-autohiding-scrollbar if you wish to display on hover.
+  // -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  // There used to be a CSS rule that could hide scrollbars in Firefox, but it has since been deprecated.
+  scrollbar-width: none !important;
+}
+
+@mixin extend-to-edges-outer {
+  width: calc(100% + #{$container-padding-x-xxl} * 2);
+  margin-left: -$container-padding-x-xxl;
+
+  @include b-btw(md, xl) {
+    width: calc(100% + #{$container-padding-x-md} * 2);
+    margin-left: -$container-padding-x-md;
+  }
+  @include b-d(md) {
+    width: calc(100% + #{$container-padding-x-xs} * 2);
+    margin-left: -$container-padding-x-xs;
+  }
+}
+
+@mixin extend-to-edges-inner {
+  padding: 0 $container-padding-x-xxl;
+
+  @include b-btw(md, xl) {
+    padding: 0 $container-padding-x-md;
+  }
+
+  @include b-d(md) {
+    padding: 0 $container-padding-x-xs;
+  }
+}
+
+// Miscellaneous
+
+// Fix iOS Safari border-radius bug
+@mixin fix-ios-border-radius {
+  transform: translateZ(0);
+}

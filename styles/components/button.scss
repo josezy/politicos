@@ -1,0 +1,131 @@
+button {
+  display: block;
+  padding: 0;
+  font-feature-settings: inherit;
+  background: none;
+  border: 0;
+  outline: none;
+  appearance: none;
+}
+
+.btn {
+  position: relative;
+  z-index: 1;
+  color: $white;
+  text-transform: uppercase;
+  background-color: transparent;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    padding: 2px;
+    content: '';
+    border-radius: inherit;
+  }
+
+  &::before {
+    mask: linear-gradient($white 0, $white 100%) content-box,
+      linear-gradient($white 0, $white 100%) border-box;
+    mask-composite: subtract;
+  }
+
+  &::after {
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  &:hover,
+  &:focus {
+    color: $white;
+    background-color: $black;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &-sm {
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  /* Variant: white */
+  &-white {
+    color: $gray-300;
+
+    &::before {
+      background: linear-gradient(
+        134.72deg,
+        #c4c4c4 0%,
+        rgb(219 141 141 / 0%) 100%
+      );
+    }
+
+    &::after {
+      background: #c4c4c4;
+      mask: linear-gradient($white 0, $white 100%) content-box,
+        linear-gradient($white 0, $white 100%) border-box;
+      mask-composite: subtract;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.15rem rgba($white, 0.5);
+    }
+  }
+
+  /* Variant: neon */
+  &-neon {
+    background-image: linear-gradient(
+      100.22deg,
+      rgb(42 189 232 / 25%) 3.4%,
+      rgb(42 189 232 / 0%) 45.23%,
+      rgb(10 12 12 / 0%) 47.28%,
+      rgb(32 207 178 / 24%) 108.14%
+    );
+    box-shadow: 0 0 20px rgb(54 179 192 / 70%);
+
+    &::before,
+    &::after {
+      background: linear-gradient(180deg, #4b98cd 0%, #1fcfb1 100%);
+    }
+  }
+
+  /* Variant: purple */
+  &-purple {
+    background-color: rgba(154 59 204 / 11%);
+
+    &::before {
+      background: radial-gradient(
+        137.41% 108.7% at 93.79% 18.39%,
+        #f97ff4 0%,
+        #7b25bf 24.14%,
+        #f989f4 41.12%,
+        #fce5fb 57.85%
+      );
+    }
+
+    &:hover,
+    &:focus {
+      background-color: #2e123d;
+    }
+  }
+
+  /* Variant: input-style */
+  &-input-style {
+    padding: 14px 16px;
+    font-family: $font-family-base;
+    font-size: $input-font-size;
+    line-height: $line-height-base;
+    background: linear-gradient(180deg, #202024 13.57%, #131314 88.31%);
+    border-radius: $input-border-radius;
+
+    &::before {
+      display: none;
+    }
+  }
+}
