@@ -66,4 +66,6 @@ const InputWithLabel = React.forwardRef((props, ref) => {
   )
 })
 
+InputWithLabel.displayName = 'InputWithLabel'
+
 export default InputWithLabel
