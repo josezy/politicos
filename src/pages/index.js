@@ -5,6 +5,8 @@ import styles from '../../styles/Home.module.css'
 
 import InputWithLabel from '../components/InputWithLabel'
 
+const SPREADSHEET_URL = 'https://sheet.best/api/sheets/b0063d9b-eb6a-46a3-a911-d2586863ba64'
+
 export default function Home() {
   const [userID, setUserID] = useState('')
 
@@ -30,13 +32,15 @@ export default function Home() {
           label="Cédula"
           value={userID}
           onChange={(e) => setUserID(e.target.value)}
-          onKeyPress={(target) => {
+          onKeyPress={async (target) => {
             if (target.code == 'Enter') {
-              const msgs = [
-                'Tu cédula apoya el proceso de revocatoria',
-                'No estás inscrito',
-              ]
-              alert(msgs[Math.floor(Math.random() * 2)])
+              fetch(SPREADSHEET_URL)
+                .then(res => res.json())
+                .then(res => {
+                  const IDs = res.map(item => item['Cédula'])
+                  if (IDs.includes(userID)) alert('Tu cédula apoya el proceso de revocatoria')
+                  else alert('No estás inscrito')
+                })
             }
           }}
           autoComplete="off"
