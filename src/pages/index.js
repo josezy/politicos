@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 
 import InputWithLabel from '../components/InputWithLabel'
+import YoutubeVisor from '../components/YoutubeVisor'
 
 const SPREADSHEET_URL = 'https://sheet.best/api/sheets/b0063d9b-eb6a-46a3-a911-d2586863ba64'
 
@@ -46,6 +47,7 @@ export default function Home() {
           autoComplete="off"
           // inputMode="decimal"
         />
+        <YoutubeVisor/>
       </main>
 
       {/* <footer className={styles.footer}>

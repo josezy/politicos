@@ -1,0 +1,15 @@
+.video-responsive {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  }
+  
+.video-responsive iframe {
+    height: 480px;
+    width:  640px;
+    
+    margin-top: 50px;
+}
+
