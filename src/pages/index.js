@@ -1,15 +1,27 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../../styles/Home.module.css'
+// import Image from 'next/image'
+import { Button } from 'react-bootstrap'
 
 import InputWithLabel from '../components/InputWithLabel'
 import YoutubeVisor from '../components/YoutubeVisor'
+
+import styles from '../../styles/Home.module.css'
 
 const SPREADSHEET_URL = 'https://sheet.best/api/sheets/b0063d9b-eb6a-46a3-a911-d2586863ba64'
 
 export default function Home() {
   const [userID, setUserID] = useState('')
+
+  const queryID = () => {
+    fetch(SPREADSHEET_URL)
+      .then(res => res.json())
+      .then(res => {
+        const IDs = res.map(item => item['Cédula'])
+        if (IDs.includes(userID)) alert('Tu cédula apoya el proceso de revocatoria')
+        else alert('No estás inscrito')
+      })
+  }
 
   return (
     <div className={styles.container}>
@@ -34,20 +46,16 @@ export default function Home() {
           value={userID}
           onChange={(e) => setUserID(e.target.value)}
           onKeyPress={async (target) => {
-            if (target.code == 'Enter') {
-              fetch(SPREADSHEET_URL)
-                .then(res => res.json())
-                .then(res => {
-                  const IDs = res.map(item => item['Cédula'])
-                  if (IDs.includes(userID)) alert('Tu cédula apoya el proceso de revocatoria')
-                  else alert('No estás inscrito')
-                })
-            }
+            if (target.code == 'Enter') queryID()
           }}
           autoComplete="off"
-          // inputMode="decimal"
+        // inputMode="decimal"
         />
-        <YoutubeVisor/>
+        <br />
+        <Button variant="neon" onClick={queryID}>
+          Consultar
+        </Button>
+        <YoutubeVisor />
       </main>
 
       {/* <footer className={styles.footer}>
